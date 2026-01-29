@@ -1,0 +1,59 @@
+package assignment_2; // ملاحظة: غير اسم المجلد لـ assignment_2
+
+import java.util.*;
+
+public class Assignment2Solution {
+
+    // Q1: Reverse a string using Stack
+    public String reverseString(String str) {
+        Stack<Character> s = new Stack<>();
+        for (char c : str.toCharArray()) s.push(c);
+        
+        String reversed = "";
+        while (!s.isEmpty()) reversed += s.pop();
+        return reversed;
+    }
+
+    // Q2: Sort a stack using another Stack
+    public Stack<Integer> sortStack(Stack<Integer> input) {
+        Stack<Integer> tempStack = new Stack<>();
+        while (!input.isEmpty()) {
+            int val = input.pop();
+            while (!tempStack.isEmpty() && tempStack.peek() > val) {
+                input.push(tempStack.pop());
+            }
+            tempStack.push(val);
+        }
+        return tempStack;
+    }
+
+    // Q3: Reverse a Queue
+    public void reverseQueue(Queue<Integer> q) {
+        Stack<Integer> s = new Stack<>();
+        while (!q.isEmpty()) s.push(q.remove());
+        while (!s.isEmpty()) q.add(s.pop());
+    }
+
+    // Q4: Priority Queue (Smallest element first)
+    public void usePriorityQueue() {
+        // الـ PriorityQueue في جافا ترتب تصاعدياً بشكل تلقائي
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        pq.add(10);
+        pq.add(5);
+        pq.add(20);
+        // عند استخدام poll سيخرج الرقم 5 أولاً لأنه الأصغر
+        System.out.println(pq.poll()); 
+    }
+
+    // Q5: Merge two sorted queues
+    public Queue<Integer> mergeQueues(Queue<Integer> q1, Queue<Integer> q2) {
+        Queue<Integer> merged = new LinkedList<>();
+        while (!q1.isEmpty() && !q2.isEmpty()) {
+            if (q1.peek() < q2.peek()) merged.add(q1.remove());
+            else merged.add(q2.remove());
+        }
+        while (!q1.isEmpty()) merged.add(q1.remove());
+        while (!q2.isEmpty()) merged.add(q2.remove());
+        return merged;
+    }
+}
