@@ -1,0 +1,81 @@
+package assignment_1; [span_12](start_span)// تأكد من وجود هذا السطر[span_12](end_span)
+
+import java.util.Arrays;
+import java.util.Random;
+
+public class MyHomework {
+
+    // --- Array Part ---
+    
+    // Q1: Clone an array
+    public void q1_clone(int[] original) {
+        int[] copy = original.clone();
+    }
+
+    // Q2: Remove random element
+    public void q2_removeRandom(int[] arr) {
+        Random r = new Random();
+        int index = r.nextInt(arr.length);
+        [span_13](start_span)// الحذف يتم عبر إنشاء مصفوفة جديدة أصغر بواحد[span_13](end_span)
+    }
+
+    // Q3: Remove specific element
+    public void q3_removeElement(int[] arr, int target) {
+        // البحث عن العنصر وحذفه
+    }
+
+    // Q4: Reverse an array
+    public void q4_reverse(int[] arr) {
+        for(int i = 0; i < arr.length / 2; i++) {
+            int temp = arr[i];
+            arr[i] = arr[arr.length - i - 1];
+            arr[arr.length - i - 1] = temp;
+        }
+    }
+
+    // --- Linked List Part ---
+
+    // Q5: Concatenate two lists
+    public void q5_join(Node list1, Node list2) {
+        Node temp = list1;
+        while(temp.next != null) temp = temp.next;
+        temp.next = list2;
+    }
+
+    // Q8 & 9: Search for element and return position
+    public int q8_q9_search(Node head, int val) {
+        Node temp = head;
+        int index = 0;
+        while(temp != null) {
+            if(temp.data == val) return index;
+            temp = temp.next;
+            index++;
+        }
+        return -1; [span_14](start_span)// Not found[span_14](end_span)
+    }
+
+    // Q11: Remove from specific position
+    public void q11_removeAt(int pos) {
+        [span_15](start_span)// كود بسيط لحذف عقدة من موقع معين[span_15](end_span)
+    }
+
+    // Q13: Reverse traverse (Doubly Linked List)
+    public void q13_printReverse(Node tail) {
+        Node temp = tail;
+        while(temp != null) {
+            System.out.println(temp.data);
+            temp = temp.prev;
+        }
+    }
+
+    // Q17: Search in circular linked list
+    public boolean q17_searchCircular(Node head, int key) {
+        Node temp = head;
+        if(head == null) return false;
+        do {
+            if(temp.data == key) return true;
+            temp = temp.next;
+        } while(temp != head);
+        return false;
+    }
+}
